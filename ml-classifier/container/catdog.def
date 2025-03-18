@@ -1,0 +1,26 @@
+# Start from a standard CUDA image
+Bootstrap: docker
+From: nvidia/cuda:12.4.1-runtime-ubuntu22.04 
+
+%files
+    requirements.txt /app/
+    app/. /app/.
+
+%post
+    export DEBIAN_FRONTEND="noninteractive"
+
+    apt-get update -y
+    apt-get install software-properties-common -y
+    add-apt-repository ppa:deadsnakes/ppa -y
+    apt-get update -y
+
+    # Install python and pip
+    apt-get install -y \
+        python3.12 python3.12-dev python3.12-venv zip \
+        && update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1 \
+        && python -m ensurepip --upgrade \
+        && rm -rf /var/lib/apt/lists/*
+
+    # install dependencies
+    pip3.12 install -r /app/requirements.txt
+

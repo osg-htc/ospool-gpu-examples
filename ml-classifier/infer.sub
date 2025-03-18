@@ -1,0 +1,18 @@
+
++SingularityImage = "osdf:///ospool/uc-shared/public/OSG-Staff/training/ospool-gpu-examples/ml-classifier/catdog.sif"
+
+executable = infer.sh
+
+log = logs/$(Cluster)_$(Process).log
+error = logs/$(Cluster)_$(Process).err
+output = logs/$(Cluster)_$(Process).out
+
+transfer_input_files = osdf:///ospool/uc-shared/public/OSG-Staff/training/ospool-gpu-examples/ml-classifier/test.zip, output/model.pth
+transfer_output_files = dog_probs.csv
+
+request_cpus = 1
+request_gpus = 1
+request_memory = 6GB
+request_disk = 10GB
+
+queue 1
