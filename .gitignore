@@ -1,0 +1,10 @@
+llm-rag/answers.txt
+llm-rag/logs/*.error
+llm-rag/logs/*.log
+llm-rag/logs/*.output
+llm-rag/ollama.log
+ml-classifier/dog_probs.csv
+ml-classifier/logs/*.err
+ml-classifier/logs/*.log
+ml-classifier/logs/*.out
+ml-classifier/output/
